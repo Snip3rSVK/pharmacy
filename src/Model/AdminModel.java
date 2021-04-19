@@ -1,5 +1,7 @@
 package Model;
 
+import App.User.ManagerUser;
+import App.User.PharmacistUser;
 import App.User.User;
 import Services.LoginService;
 
@@ -13,8 +15,21 @@ public class AdminModel {
         this.currentUser = this.loginService.getCurrentUser();
     }
 
-    public User getUser() {
+    // TODO check for null here
+    private User getUser() {
         return this.currentUser;
+    }
+
+    public boolean isUserManager() {
+        return this.getUser() instanceof ManagerUser;
+    }
+
+    public boolean isUserPharmacist() {
+        return this.getUser() instanceof PharmacistUser;
+    }
+
+    public String getUserEmail() {
+        return this.getUser().getEmail();
     }
 
     public void logout() {

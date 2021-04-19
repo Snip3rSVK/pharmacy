@@ -21,14 +21,24 @@ public class SceneService {
 
         this.primaryStage = primaryStage;
         this.primaryStage.setScene(scene);
+        this.primaryStage.show();
     }
 
     public void add(String name, FXMLLoader loader) {
         this.scenes.put(name, loader);
     }
 
-    public void switchScene(String name) throws IOException {
-        this.scene.setRoot(this.scenes.get(name).load());
+    public void switchScene(String name) {
+        FXMLLoader loader = this.scenes.get(name);
+        loader.setRoot(null);
+        loader.setController(null);
+
+        try {
+            this.scene.setRoot(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -49,8 +49,5 @@ public class LoginController {
         catch (LoginError error) {
             errorMessage.setText(error.getMessage());
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

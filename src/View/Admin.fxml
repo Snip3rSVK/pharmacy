@@ -14,7 +14,7 @@
 
                 <Text fx:id="welcomeMessage"></Text>
 
-                <!--<Button text="Odhlásiť sa" onAction="#logout"/>-->
+                <Button text="Odhlásiť sa" onAction="#logout"/>
 
             </VBox>
         </GridPane>

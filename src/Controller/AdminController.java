@@ -6,9 +6,12 @@ import Model.AdminModel;
 import Services.LoginService;
 import Services.SceneService;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AdminController {
     private AdminModel m;
@@ -33,17 +36,17 @@ public class AdminController {
     private void afterInitialize() {
         String type = null;
 
-        if (this.m.getUser() instanceof ManagerUser) {
+        if (this.m.isUserManager()) {
             type = "MANAŽÉR";
         }
-        else if (this.m.getUser() instanceof PharmacistUser) {
+        else if (this.m.isUserPharmacist()) {
             type = "LEKÁRNIK";
         }
 
-        welcomeMessage.setText(this.m.getUser().getEmail() + " - " + type);
+        welcomeMessage.setText(this.m.getUserEmail() + " - " + type);
     }
 
-    public void logout() throws IOException {
+    public void logout() {
         this.m.logout();
 
         this.sceneService.switchScene("login");
