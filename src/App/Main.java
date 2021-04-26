@@ -1,5 +1,6 @@
 package App;
 
+import App.Db.DrugsDatabase;
 import App.Db.UsersDatabase;
 import Controller.AdminController;
 import Controller.LoginController;
@@ -9,12 +10,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Lekáreň");
+
+        UsersDatabase usersDatabase = new UsersDatabase();
+        DrugsDatabase drugsDatabase = new DrugsDatabase();
+
         SceneService sceneService = new SceneService(primaryStage);
-        LoginService loginService = new LoginService(new UsersDatabase());
+        LoginService loginService = new LoginService(usersDatabase);
 
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../View/Login.fxml"));
         // inject loginService and sceneService into LoginController
@@ -25,12 +30,9 @@ public class Main extends Application {
         AdminController adminController = new AdminController(loginService, sceneService);
         adminLoader.setControllerFactory((Class<?> type) -> adminController);
 
-
-        primaryStage.setTitle("Lekáreň");
-
         // TODO maybe enums here
-        sceneService.add("admin", adminLoader);
         sceneService.add("login", loginLoader);
+        sceneService.add("admin", adminLoader);
         sceneService.switchScene("login");
     }
 

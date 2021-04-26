@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class UsersDatabase {
 
-    private Set<User> allUsers = new HashSet<User>();
+    private Set<User> allUsers = new HashSet<>();
 
     public UsersDatabase() {
         allUsers.add(new ManagerUser("Matej", "Pavlík", "snip3rsvk@gmail.com", "+421948611676", "1234"));
