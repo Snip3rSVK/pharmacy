@@ -11,5 +11,7 @@ public class LoginModel {
 
     public void login(String email, String password) {
         this.loginService.login(email, password);
+        // TODO check for null
+        this.loginService.getCurrentUser().login();
     }
 }

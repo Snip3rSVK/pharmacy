@@ -42,9 +42,6 @@ public class LoginController {
 
         try {
             this.m.login(email.getText(), password.getText());
-
-            // Login successfull
-            this.sceneService.switchScene("admin");
         }
         catch (LoginError error) {
             errorMessage.setText(error.getMessage());

@@ -1,12 +1,11 @@
-package Model;
+package Model.Admin;
 
-import App.User.ManagerUser;
-import App.User.PharmacistUser;
 import App.User.User;
 import Services.LoginService;
 
 public class AdminModel {
-    private LoginService loginService;
+    protected final LoginService loginService;
+
     private User currentUser;
 
     public AdminModel(LoginService loginService) {
@@ -18,14 +17,6 @@ public class AdminModel {
     // TODO check for null here
     private User getUser() {
         return this.currentUser;
-    }
-
-    public boolean isUserManager() {
-        return this.getUser() instanceof ManagerUser;
-    }
-
-    public boolean isUserPharmacist() {
-        return this.getUser() instanceof PharmacistUser;
     }
 
     public String getUserEmail() {

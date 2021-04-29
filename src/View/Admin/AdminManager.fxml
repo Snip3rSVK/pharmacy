@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="Controller.Admin.AdminManagerController">
+    <GridPane alignment="center">
+        <VBox>
+            <Button text="Nákup liekov" onAction="#logout"/>
+            <Button text="Zamestnanci" onAction="#logout"/>
+            <Button text="Reporty" onAction="#logout"/>
+            <Button text="Sklad" onAction="#logout"/>
+
+            <Button text="Odhlásiť sa" onAction="#logout"/>
+        </VBox>
+    </GridPane>
+</StackPane>

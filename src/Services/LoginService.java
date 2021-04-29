@@ -15,7 +15,7 @@ public class LoginService {
     }
 
     public void login(String email, String password) {
-        User user = getUser(email, password);
+        User user = this.getUser(email, password);
 
         if (user != null) {
             this.currentUser = user;
@@ -30,7 +30,7 @@ public class LoginService {
     }
 
     public User getUser(String email, String password) {
-        for (User user : usersDatabase.getAllUsers()) {
+        for (User user : this.usersDatabase.getAllUsers()) {
             if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
                 return user;
             }

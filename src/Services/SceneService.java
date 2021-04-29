@@ -1,18 +1,18 @@
 package Services;
 
+import App.Router.RouterEnum;
+import App.Router.RouterEnumType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-// TODO
 public class SceneService {
-    private HashMap<String, FXMLLoader> scenes = new HashMap<>();
+    private HashMap<RouterEnumType, FXMLLoader> scenes = new HashMap<>();
+
     private Scene scene;
     private Stage primaryStage;
 
@@ -24,18 +24,19 @@ public class SceneService {
         this.primaryStage.show();
     }
 
-    public void add(String name, FXMLLoader loader) {
-        this.scenes.put(name, loader);
+    public void add(RouterEnumType routerEnum, FXMLLoader loader) {
+        this.scenes.put(routerEnum, loader);
     }
 
-    public void switchScene(String name) {
-        FXMLLoader loader = this.scenes.get(name);
+    public void switchScene(RouterEnumType routerEnum) {
+        FXMLLoader loader = this.scenes.get(routerEnum);
         loader.setRoot(null);
         loader.setController(null);
 
         try {
             this.scene.setRoot(loader.load());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -2,7 +2,9 @@ package App;
 
 import App.Db.DrugsDatabase;
 import App.Db.UsersDatabase;
-import Controller.AdminController;
+import App.Router.RouterEnum;
+import Controller.Admin.AdminManagerController;
+import Controller.Admin.AdminPharmacistController;
 import Controller.LoginController;
 import Services.LoginService;
 import Services.SceneService;
@@ -15,10 +17,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Lekáreň");
 
-        UsersDatabase usersDatabase = new UsersDatabase();
+        SceneService sceneService = new SceneService(primaryStage);
+
+        UsersDatabase usersDatabase = new UsersDatabase(sceneService);
         DrugsDatabase drugsDatabase = new DrugsDatabase();
 
-        SceneService sceneService = new SceneService(primaryStage);
+        // TODO THIS DOESNT LOOK GOOD (maybe some extends?)
         LoginService loginService = new LoginService(usersDatabase);
 
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../View/Login.fxml"));
@@ -26,14 +30,18 @@ public class Main extends Application {
         LoginController loginController = new LoginController(loginService, sceneService);
         loginLoader.setControllerFactory((Class<?> type) -> loginController);
 
-        FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("../View/Admin.fxml"));
-        AdminController adminController = new AdminController(loginService, sceneService);
-        adminLoader.setControllerFactory((Class<?> type) -> adminController);
+        FXMLLoader adminManagerLoader = new FXMLLoader(getClass().getResource("../View/Admin/AdminManager.fxml"));
+        AdminManagerController adminManagerController = new AdminManagerController(loginService, sceneService);
+        adminManagerLoader.setControllerFactory((Class<?> type) -> adminManagerController);
 
-        // TODO maybe enums here
-        sceneService.add("login", loginLoader);
-        sceneService.add("admin", adminLoader);
-        sceneService.switchScene("login");
+        FXMLLoader adminPharmacistLoader = new FXMLLoader(getClass().getResource("../View/Admin/AdminPharmacist.fxml"));
+        AdminPharmacistController adminPharmacistController = new AdminPharmacistController(loginService, sceneService);
+        adminPharmacistLoader.setControllerFactory((Class<?> type) -> adminPharmacistController);
+
+        sceneService.add(RouterEnum.LOGIN, loginLoader);
+        sceneService.add(RouterEnum.ADMIN.MANAGER, adminManagerLoader);
+        sceneService.add(RouterEnum.ADMIN.PHARMACIST, adminPharmacistLoader);
+        sceneService.switchScene(RouterEnum.LOGIN);
     }
 
 
