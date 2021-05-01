@@ -5,8 +5,6 @@ import Controller.Controller;
 import Model.Model;
 import javafx.fxml.FXMLLoader;
 
-import java.net.URL;
-
 public class FXMLLoaderCreator {
     private FXMLLoaderCreator() {}
 

@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Model;
 
-public class Controller<T extends Model> {
+public abstract class Controller<T extends Model> {
     protected T m = null;
 
     public void initModel(T model) {

@@ -7,7 +7,7 @@ public enum ViewEnum {
     ADMIN_MANAGER("Admin/AdminManager.fxml"),
     ADMIN_PHARMACIST("Admin/AdminPharmacist.fxml");
 
-    private final String VIEW_DIRECTORY = "../../View";
+    private final String VIEW_DIRECTORY = "../../View/";
 
     private URL path;
 
