@@ -1,26 +1,21 @@
 package Controller.Admin;
 
-import App.Router.RouterEnum;
-import Model.Admin.AdminModel;
-import Services.LoginService;
+import App.ViewEnum.ViewEnum;
+import Controller.Controller;
+import Model.Admin.AbstractAdminModel;
 import Services.SceneService;
 
-public abstract class AbstractAdminController {
-    private AdminModel m;
-
-    protected final LoginService loginService;
+public abstract class AbstractAdminController<T extends AbstractAdminModel> extends Controller<T> {
     protected final SceneService sceneService;
 
-    public AbstractAdminController(LoginService loginService, SceneService sceneService) {
-        this.loginService = loginService;
+    public AbstractAdminController(SceneService sceneService) {
         this.sceneService = sceneService;
-        this.m = new AdminModel(this.loginService);
     }
 
     public void logout() {
         this.m.logout();
 
-        this.sceneService.switchScene(RouterEnum.LOGIN);
+        this.sceneService.switchScene(ViewEnum.LOGIN);
     }
 
 }

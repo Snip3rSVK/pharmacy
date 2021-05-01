@@ -1,9 +1,8 @@
 package Model.Admin;
 
-import Model.Admin.AdminModel;
 import Services.LoginService;
 
-public class AdminPharmacistModel extends AdminModel {
+public class AdminPharmacistModel extends AbstractAdminModel {
 
     public AdminPharmacistModel(LoginService loginService) {
         super(loginService);

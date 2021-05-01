@@ -6,7 +6,7 @@ import App.Drug.DrugSupplier;
 
 import java.util.*;
 
-public class DrugsDatabase {
+public class DrugsDatabase extends Database {
 
     private Map<String, DrugManufacturer> allDrugManufacturers = new HashMap<>();
     private Map<String, DrugSupplier> allDrugSuppliers = new HashMap<>();

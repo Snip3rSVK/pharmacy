@@ -9,7 +9,7 @@ import Services.SceneService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UsersDatabase {
+public class UsersDatabase extends Database {
 
     private Set<User> allUsers = new HashSet<>();
 

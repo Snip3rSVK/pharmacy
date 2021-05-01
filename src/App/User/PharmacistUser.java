@@ -1,6 +1,6 @@
 package App.User;
 
-import App.Router.RouterEnum;
+import App.ViewEnum.ViewEnum;
 import Services.SceneService;
 
 public class PharmacistUser extends User {
@@ -11,6 +11,6 @@ public class PharmacistUser extends User {
     }
 
     public void login() {
-        this.sceneService.switchScene(RouterEnum.ADMIN.PHARMACIST);
+        this.sceneService.switchScene(ViewEnum.ADMIN_PHARMACIST);
     }
 }

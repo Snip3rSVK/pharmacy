@@ -2,7 +2,7 @@ package Model;
 
 import Services.LoginService;
 
-public class LoginModel {
+public class LoginModel implements Model {
     private LoginService loginService;
 
     public LoginModel(LoginService loginService) {

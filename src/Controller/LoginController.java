@@ -16,20 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController {
-    private LoginModel m;
-
-    private LoginService loginService;
-    private SceneService sceneService;
-    //private Main main;
-
-    public LoginController(LoginService loginService, SceneService sceneService) {
-        this.loginService = loginService;
-        this.sceneService = sceneService;
-    }
-
-    public void initialize() {
-        this.m = new LoginModel(this.loginService);
+public class LoginController extends Controller<LoginModel> {
+    public LoginController() {
     }
 
     @FXML TextField email;

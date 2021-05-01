@@ -5,7 +5,7 @@ import App.User.User;
 import App.Validation.LoginError;
 import App.Validation.LoginErrorType;
 
-public class LoginService {
+public class LoginService extends Service {
     private User currentUser = null;
 
     private UsersDatabase usersDatabase;
