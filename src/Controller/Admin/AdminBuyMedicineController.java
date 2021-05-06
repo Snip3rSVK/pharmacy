@@ -49,19 +49,20 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
         // convert drugsDatabase into something javafx can read
         drugsList.setItems(FXCollections.observableArrayList(this.drugsDatabase.getAll()));
         // set list item name to drug.getFullName()
-        drugsList.setCellFactory(FXMLListView.<Drug>cellTextCallback(drug -> drug.getFullName()));
+        drugsList.setCellFactory(FXMLListView.cellTextCallback(Drug::getFullName));
     }
 
     public void initializeSuppliers() {
         // get suppliers when drug is selected
         drugsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
-            suppliersList.setItems(FXCollections.observableArrayList(newValue.getSuppliers()));
+            if (newValue != null) {
+                suppliersList.setItems(FXCollections.observableArrayList(newValue.getSuppliers()));
+            }
         });
         // show suppliers after drug is selected
         suppliersList.visibleProperty().bind(drugsList.getSelectionModel().selectedItemProperty().isNotNull());
         // set list item name to drugSupplier.getName()
-        suppliersList.setCellFactory(FXMLListView.<DrugSupplier>cellTextCallback(drugSupplier -> drugSupplier.getName()));
+        suppliersList.setCellFactory(FXMLListView.cellTextCallback(DrugSupplier::getName));
     }
 
     public void initializeDrugCount() {
