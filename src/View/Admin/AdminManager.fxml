@@ -8,7 +8,7 @@
            fx:controller="Controller.Admin.AdminManagerController">
     <GridPane alignment="center">
         <VBox>
-            <Button text="Nákup liekov" onAction="#logout"/>
+            <Button text="Nákup liekov" onAction="#goToBuyMedicine"/>
             <Button text="Zamestnanci" onAction="#logout"/>
             <Button text="Reporty" onAction="#logout"/>
             <Button text="Sklad" onAction="#logout"/>

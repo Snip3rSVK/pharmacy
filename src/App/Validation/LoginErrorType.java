@@ -9,6 +9,7 @@ public enum LoginErrorType {
         this.name = str;
     }
 
+    // TODO check this
     public String toString() {
         return this.name;
     }

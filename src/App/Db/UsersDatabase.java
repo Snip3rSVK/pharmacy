@@ -9,20 +9,16 @@ import Services.SceneService;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UsersDatabase extends Database {
+public class UsersDatabase extends AbstractDatabase<User> {
 
     private Set<User> allUsers = new HashSet<>();
-
-    private SceneService sceneService;
 
     public UsersDatabase(SceneService sceneService) {
         allUsers.add(new ManagerUser("Matej", "Pavlík", "snip3rsvk@gmail.com", "+421948611676", "1234", sceneService));
         allUsers.add(new PharmacistUser("Janko", "Hraško", "hrasko@gmail.com", "+421777777777", "1234", sceneService));
-
-        // this.sceneService = sceneService;
     }
 
-    public Set<User> getAllUsers() {
+    public Set<User> getAll() {
         return this.allUsers;
     }
 

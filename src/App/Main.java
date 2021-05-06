@@ -3,9 +3,11 @@ package App;
 import App.Db.DrugsDatabase;
 import App.Db.UsersDatabase;
 import App.ViewEnum.ViewEnum;
+import Controller.Admin.AdminBuyMedicineController;
 import Controller.Admin.AdminManagerController;
 import Controller.Admin.AdminPharmacistController;
 import Controller.LoginController;
+import Model.Admin.AdminBuyMedicineModel;
 import Model.Admin.AdminManagerModel;
 import Model.Admin.AdminPharmacistModel;
 import Model.LoginModel;
@@ -46,10 +48,17 @@ public class Main extends Application {
             new AdminPharmacistController(sceneService)
         );
 
+        FXMLLoader adminBuyMedicineLoader = FXMLLoaderCreator.create(
+            ViewEnum.ADMIN_BUY_MEDICINE,
+            new AdminBuyMedicineModel(loginService),
+            new AdminBuyMedicineController(sceneService, drugsDatabase)
+        );
+
         // TODO Maybe incorporate loaders directly into ViewEnums?
         sceneService.add(ViewEnum.LOGIN, loginLoader);
         sceneService.add(ViewEnum.ADMIN_MANAGER, adminManagerLoader);
         sceneService.add(ViewEnum.ADMIN_PHARMACIST, adminPharmacistLoader);
+        sceneService.add(ViewEnum.ADMIN_BUY_MEDICINE, adminBuyMedicineLoader);
         sceneService.switchScene(ViewEnum.LOGIN);
     }
 

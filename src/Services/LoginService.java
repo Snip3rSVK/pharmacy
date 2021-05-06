@@ -30,7 +30,7 @@ public class LoginService extends Service {
     }
 
     public User getUser(String email, String password) {
-        for (User user : this.usersDatabase.getAllUsers()) {
+        for (User user : this.usersDatabase.getAll()) {
             if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)) {
                 return user;
             }

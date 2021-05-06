@@ -1,8 +1,10 @@
 package Model.Admin;
 
 import App.User.User;
+import App.ViewEnum.ViewEnum;
 import Model.Model;
 import Services.LoginService;
+import Services.SceneService;
 
 public abstract class AbstractAdminModel implements Model {
     private LoginService loginService;

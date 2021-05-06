@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="Controller.Admin.AdminBuyMedicineController"
+>
+    <GridPane alignment="center">
+        <VBox>
+            <Label text="Výber lieku"></Label>
+            <ListView fx:id="drugsList"/>
+
+            <Label text="Výber dodávateľa"></Label>
+            <ListView fx:id="suppliersList"/>
+
+            <Label text="Počet kusov"></Label>
+            <TextField fx:id="drugCount" ></TextField>
+
+            <Button fx:id="addToCartButton" text="Pridať do košíka" onAction="#addToCart"/>
+
+            <Button text="Kúpiť" onAction="#buy"/>
+
+            <Button text="Odhlásiť sa" onAction="#logout"/>
+        </VBox>
+    </GridPane>
+</StackPane>

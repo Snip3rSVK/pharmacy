@@ -1,6 +1,9 @@
 package App.Drug;
 
+import Util.HashGenerator;
+
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Drug {
 
@@ -13,10 +16,16 @@ public class Drug {
     private DrugManufacturer manufacturer;
     private ArrayList<DrugSupplier> suppliers;
 
-    private boolean prescriptionDrug;
+    private Boolean prescriptionDrug;
+
+    private Double price;
+
+    private String warehouseSection;
+
+    // TODO buying price, selling price of drug??
 
     // TODO maybe object as constructor parameter
-    public Drug(String registrationNumber, Integer code, String name, String nameDetail, DrugManufacturer manufacturer, ArrayList<DrugSupplier> suppliers, boolean prescriptionDrug) {
+    public Drug(String registrationNumber, Integer code, String name, String nameDetail, DrugManufacturer manufacturer, ArrayList<DrugSupplier> suppliers, Boolean prescriptionDrug, Double price) {
         this.registrationNumber = registrationNumber;
         this.code = code;
 
@@ -27,5 +36,33 @@ public class Drug {
         this.suppliers = suppliers;
 
         this.prescriptionDrug = prescriptionDrug;
+
+        this.price = price;
+
+        this.warehouseSection = this.generateWarehouseSection();
+    }
+
+    // generates sections like A13, B5, etc.
+    private String generateWarehouseSection() {
+        String fullName = this.getFullName();
+
+        // TODO 20
+        return Character.toUpperCase(fullName.charAt(0)) + String.valueOf(HashGenerator.generateFromString(fullName, 20));
+    }
+
+    public String getFullName() {
+        return this.name + ", " + this.nameDetail;
+    }
+
+    public Integer getCode() {
+        return this.code;
+    }
+
+    public Double getPrice() {
+        return this.price;
+    }
+
+    public ArrayList<DrugSupplier> getSuppliers() {
+        return this.suppliers;
     }
 }

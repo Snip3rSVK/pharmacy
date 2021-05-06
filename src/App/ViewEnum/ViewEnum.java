@@ -6,7 +6,8 @@ import java.net.URL;
 public enum ViewEnum {
     LOGIN("Login.fxml"),
     ADMIN_MANAGER("Admin/AdminManager.fxml"),
-    ADMIN_PHARMACIST("Admin/AdminPharmacist.fxml");
+    ADMIN_PHARMACIST("Admin/AdminPharmacist.fxml"),
+    ADMIN_BUY_MEDICINE("Admin/AdminBuyMedicine.fxml");
 
     private final String VIEW_DIRECTORY = "/View/";
 
@@ -18,6 +19,7 @@ public enum ViewEnum {
         this.path = getClass().getResource(fullPath);
 
         if (this.path == null) {
+            // TODO maybe enum message
             throw new IllegalStateException("Couldn't load file " + fullPath);
         }
     }
