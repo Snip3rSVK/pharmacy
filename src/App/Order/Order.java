@@ -21,7 +21,7 @@ public class Order {
 
         this.orderItems.add(item);
         // TODO differentiate buying, selling price
-        this.totalPrice += item.getDrug().getPrice();
+        this.totalPrice += item.getDrug().getPrice() * item.getDrugCount();
     }
 
     public void remove(OrderItem item) {
@@ -30,7 +30,7 @@ public class Order {
         }
 
         if (this.orderItems.remove(item)) {
-            this.totalPrice -= item.getDrug().getPrice();
+            this.totalPrice -= item.getDrug().getPrice() * item.getDrugCount();
         }
     }
 
@@ -52,6 +52,10 @@ public class Order {
 
     public Double getTotalPrice() {
         return this.totalPrice;
+    }
+
+    public Set<OrderItem> getItems() {
+        return this.orderItems;
     }
 
 }

@@ -20,8 +20,6 @@ public class Drug {
 
     private Double price;
 
-    private String warehouseSection;
-
     // TODO buying price, selling price of drug??
 
     // TODO maybe object as constructor parameter
@@ -38,17 +36,8 @@ public class Drug {
         this.prescriptionDrug = prescriptionDrug;
 
         this.price = price;
-
-        this.warehouseSection = this.generateWarehouseSection();
     }
 
-    // generates sections like A13, B5, etc.
-    private String generateWarehouseSection() {
-        String fullName = this.getFullName();
-
-        // TODO 20
-        return Character.toUpperCase(fullName.charAt(0)) + String.valueOf(HashGenerator.generateFromString(fullName, 20));
-    }
 
     public String getFullName() {
         return this.name + ", " + this.nameDetail;

@@ -1,7 +1,9 @@
 package App;
 
 import App.Db.DrugsDatabase;
+import App.Db.OrdersDatabase;
 import App.Db.UsersDatabase;
+import App.Db.WarehouseDatabase;
 import App.ViewEnum.ViewEnum;
 import Controller.Admin.AdminBuyMedicineController;
 import Controller.Admin.AdminManagerController;
@@ -12,6 +14,7 @@ import Model.Admin.AdminManagerModel;
 import Model.Admin.AdminPharmacistModel;
 import Model.LoginModel;
 import Services.LoginService;
+import Services.OrderService;
 import Services.SceneService;
 import Util.FXMLLoaderCreator;
 import javafx.application.Application;
@@ -28,6 +31,9 @@ public class Main extends Application {
         SceneService sceneService = new SceneService(primaryStage);
         UsersDatabase usersDatabase = new UsersDatabase(sceneService);
         LoginService loginService = new LoginService(usersDatabase);
+        OrdersDatabase ordersDatabase = new OrdersDatabase();
+        WarehouseDatabase warehouseDatabase = new WarehouseDatabase();
+        OrderService orderService = new OrderService(ordersDatabase, warehouseDatabase);
 
         FXMLLoader loginLoader = FXMLLoaderCreator.create(
             ViewEnum.LOGIN,
@@ -50,7 +56,7 @@ public class Main extends Application {
 
         FXMLLoader adminBuyMedicineLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_BUY_MEDICINE,
-            new AdminBuyMedicineModel(loginService),
+            new AdminBuyMedicineModel(loginService, orderService),
             new AdminBuyMedicineController(sceneService, drugsDatabase)
         );
 

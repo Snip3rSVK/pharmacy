@@ -1,16 +1,15 @@
 package App.Validation;
 
-public enum LoginErrorType {
+public enum LoginErrorEnum implements ErrorEnum {
     BAD_LOGIN ("Nesprávny email alebo heslo!");
 
     private final String name;
 
-    LoginErrorType(String str) {
+    LoginErrorEnum(String str) {
         this.name = str;
     }
 
-    // TODO check this
-    public String toString() {
+    public String getText() {
         return this.name;
     }
 }

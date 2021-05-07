@@ -3,7 +3,7 @@ package Services;
 import App.Db.UsersDatabase;
 import App.User.User;
 import App.Validation.LoginError;
-import App.Validation.LoginErrorType;
+import App.Validation.LoginErrorEnum;
 
 public class LoginService extends Service {
     private User currentUser = null;
@@ -21,7 +21,7 @@ public class LoginService extends Service {
             this.currentUser = user;
         }
         else {
-            throw new LoginError(LoginErrorType.BAD_LOGIN);
+            throw new LoginError(LoginErrorEnum.BAD_LOGIN);
         }
     }
 

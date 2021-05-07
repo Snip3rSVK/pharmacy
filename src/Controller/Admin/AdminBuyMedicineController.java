@@ -4,15 +4,19 @@ import App.Db.DrugsDatabase;
 import App.Drug.Drug;
 import App.Drug.DrugSupplier;
 import App.Order.OrderItem;
+import App.Validation.BuyMedicineError;
 import Model.Admin.AdminBuyMedicineModel;
 import Services.SceneService;
 import Util.FXMLListView;
+import Util.Format;
 import Util.Formatter;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
+import javafx.scene.text.Text;
 
 public class AdminBuyMedicineController extends AbstractAdminController<AdminBuyMedicineModel> {
     private DrugsDatabase drugsDatabase;
@@ -34,15 +38,34 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
     private TextField drugCount;
 
     @FXML
+    private Text errorMessageDrugCount;
+
+    @FXML
     private Button addToCartButton;
 
+    @FXML
+    private TableView<OrderItem> orderItems;
+
+    @FXML
+    private Text totalPrice;
+
+    @FXML
+    private Button removeOrderItemButton;
+
+    @FXML
+    private Button buyButton;
+
     public void initialize() {
-        this.m.initializeOrder();
+        this.m.initializeOrResetOrder();
 
         this.initializeDrugs();
         this.initializeSuppliers();
         this.initializeDrugCount();
         this.initializeAddToCart();
+
+        this.initializeTotalPrice();
+        this.initializeRemoveOrderItem();
+        this.initializeBuy();
     }
 
     public void initializeDrugs() {
@@ -77,16 +100,49 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
         addToCartButton.disableProperty().bind(drugCount.textProperty().isEmpty());
     }
 
+    public void initializeTotalPrice() {
+        // update total price on add/remove item to cart
+        orderItems.getItems().addListener((ListChangeListener<? super OrderItem>)param -> {
+            // print total price in euros
+            totalPrice.setText(Format.euro.format(this.m.order.getTotalPrice()));
+        });
+    }
+
+    public void initializeRemoveOrderItem() {
+        // show removeOrderButton only when something in orderItems is selected
+        removeOrderItemButton.disableProperty().bind(orderItems.getSelectionModel().selectedItemProperty().isNull());
+    }
+
+    public void initializeBuy() {
+        // enable add to cart button when all fields are selected/filled
+        buyButton.disableProperty().bind(Bindings.isEmpty(orderItems.getItems()));
+    }
+
     public void addToCart() {
-        // TODO validation of drugCount if it is within linmits ---> this.validate....
+        errorMessageDrugCount.setText("");
 
-        this.m.order.add(new OrderItem(
-            drugsList.getSelectionModel().getSelectedItem(),
-            suppliersList.getSelectionModel().getSelectedItem(),
-            Integer.parseInt(drugCount.getText())
-        ));
+        try {
+            Integer count = Integer.parseInt(drugCount.getText());
 
-        this.clearFields();
+            this.m.validateDrugCount(count);
+
+            OrderItem orderItem = new OrderItem(
+                drugsList.getSelectionModel().getSelectedItem(),
+                suppliersList.getSelectionModel().getSelectedItem(),
+                count
+            );
+
+            this.m.order.add(orderItem);
+
+            this.clearFields();
+
+            orderItems.getItems().add(orderItem);
+        }
+        catch (BuyMedicineError error) {
+            errorMessageDrugCount.setText(error.getMessage());
+        }
+
+
     }
 
     public void clearFields() {
@@ -95,7 +151,23 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
         drugsList.getSelectionModel().clearSelection();
     }
 
+    public void removeFromCart() {
+        OrderItem selectedItem = orderItems.getSelectionModel().getSelectedItem();
+
+        this.m.order.remove(selectedItem);
+
+        orderItems.getItems().remove(selectedItem);
+    }
+
     public void buy() {
-        // add to warehouse (store) this.orderService.....
+        this.clearFields();
+
+        this.m.createOrder();
+
+        this.m.initializeOrResetOrder();
+
+        orderItems.getItems().clear();
+
+        // TODO success message
     }
 }

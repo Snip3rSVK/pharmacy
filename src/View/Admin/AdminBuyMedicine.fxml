@@ -6,24 +6,54 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.text.Text?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="Controller.Admin.AdminBuyMedicineController"
 >
     <GridPane alignment="center">
         <VBox>
-            <Label text="Výber lieku"></Label>
+            <Label text="Výber lieku"/>
             <ListView fx:id="drugsList"/>
 
-            <Label text="Výber dodávateľa"></Label>
+            <Label text="Výber dodávateľa"/>
             <ListView fx:id="suppliersList"/>
 
-            <Label text="Počet kusov"></Label>
-            <TextField fx:id="drugCount" ></TextField>
+            <Label text="Počet kusov"/>
+            <TextField fx:id="drugCount"/>
+            <Text fx:id="errorMessageDrugCount"/>
 
             <Button fx:id="addToCartButton" text="Pridať do košíka" onAction="#addToCart"/>
 
-            <Button text="Kúpiť" onAction="#buy"/>
+            <Label text="Vybraté položky"/>
+            <TableView fx:id="orderItems">
+                <columns>
+                    <TableColumn text="Liek">
+                        <cellValueFactory>
+                            <!-- will look into getDrugName() if property drugName is private or doesn't exist -->
+                            <PropertyValueFactory property="drugName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Dodávateľ">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="drugSupplierName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Počet">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="drugCount"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <Text>Celková cena: </Text>
+            <Text fx:id="totalPrice"/>
+            <Button fx:id="removeOrderItemButton" text="Odstrániť položku" onAction="#removeFromCart"/>
+
+            <Button fx:id="buyButton" text="Kúpiť" onAction="#buy"/>
 
             <Button text="Odhlásiť sa" onAction="#logout"/>
         </VBox>

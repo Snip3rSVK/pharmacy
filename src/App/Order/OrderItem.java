@@ -19,4 +19,20 @@ public class OrderItem {
         return this.drug;
     }
 
+    public DrugSupplier getDrugSupplier() {
+        return this.drugSupplier;
+    }
+
+    public Integer getDrugCount() {
+        return this.drugCount;
+    }
+
+    public String getDrugName() {
+        return this.getDrug().getFullName();
+    }
+
+    public String getDrugSupplierName() {
+        return this.getDrugSupplier().getName();
+    }
+
 }
