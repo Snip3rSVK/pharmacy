@@ -35,6 +35,8 @@ public class WarehouseDatabase extends AbstractDatabase<WarehouseItem> {
 
         if (warehouseItem == null) {
             warehouseItem = new WarehouseItem(drug);
+
+            this.allStorage.add(warehouseItem);
             this.warehouseMap.put(drug, warehouseItem);
         }
 

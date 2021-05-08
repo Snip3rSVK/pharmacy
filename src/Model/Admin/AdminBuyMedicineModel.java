@@ -6,10 +6,8 @@ import App.Validation.BuyMedicineErrorEnum;
 import Services.LoginService;
 import Services.OrderService;
 
-import java.text.DecimalFormat;
-
 public class AdminBuyMedicineModel extends AbstractAdminModel {
-    public Order order;
+    private Order order;
 
     private OrderService orderService;
 
@@ -29,6 +27,11 @@ public class AdminBuyMedicineModel extends AbstractAdminModel {
         this.orderService.createOrder(this.order);
     }
 
+    public Order getOrder() {
+        return this.order;
+    }
+
+    // TODO this in model?
     public void validateDrugCount(Integer drugCount) {
         if (drugCount == 0) {
             throw new BuyMedicineError(BuyMedicineErrorEnum.DRUG_COUNT_CANNOT_BE_ZERO);

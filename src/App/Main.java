@@ -8,10 +8,12 @@ import App.ViewEnum.ViewEnum;
 import Controller.Admin.AdminBuyMedicineController;
 import Controller.Admin.AdminManagerController;
 import Controller.Admin.AdminPharmacistController;
+import Controller.Admin.AdminWarehouseController;
 import Controller.LoginController;
 import Model.Admin.AdminBuyMedicineModel;
 import Model.Admin.AdminManagerModel;
 import Model.Admin.AdminPharmacistModel;
+import Model.Admin.AdminWarehouseModel;
 import Model.LoginModel;
 import Services.LoginService;
 import Services.OrderService;
@@ -60,11 +62,19 @@ public class Main extends Application {
             new AdminBuyMedicineController(sceneService, drugsDatabase)
         );
 
+        FXMLLoader adminWarehouseLoader = FXMLLoaderCreator.create(
+            ViewEnum.ADMIN_WAREHOUSE,
+            new AdminWarehouseModel(loginService, warehouseDatabase),
+            new AdminWarehouseController(sceneService)
+        );
+
         // TODO Maybe incorporate loaders directly into ViewEnums?
+        // TODO maybe some initialize method that will loop over all ViewEnums or some Loader wrapper class?
         sceneService.add(ViewEnum.LOGIN, loginLoader);
         sceneService.add(ViewEnum.ADMIN_MANAGER, adminManagerLoader);
         sceneService.add(ViewEnum.ADMIN_PHARMACIST, adminPharmacistLoader);
         sceneService.add(ViewEnum.ADMIN_BUY_MEDICINE, adminBuyMedicineLoader);
+        sceneService.add(ViewEnum.ADMIN_WAREHOUSE, adminWarehouseLoader);
         sceneService.switchScene(ViewEnum.LOGIN);
     }
 

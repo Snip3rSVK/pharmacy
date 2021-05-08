@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+// TODO too much logic here, try to refactor or move some logic to model
+
 public class AdminBuyMedicineController extends AbstractAdminController<AdminBuyMedicineModel> {
     private DrugsDatabase drugsDatabase;
 
@@ -104,7 +106,7 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
         // update total price on add/remove item to cart
         orderItems.getItems().addListener((ListChangeListener<? super OrderItem>)param -> {
             // print total price in euros
-            totalPrice.setText(Format.euro.format(this.m.order.getTotalPrice()));
+            totalPrice.setText(Format.euro.format(this.m.getOrder().getTotalPrice()));
         });
     }
 
@@ -132,7 +134,7 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
                 count
             );
 
-            this.m.order.add(orderItem);
+            this.m.getOrder().add(orderItem);
 
             this.clearFields();
 
@@ -154,7 +156,7 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
     public void removeFromCart() {
         OrderItem selectedItem = orderItems.getSelectionModel().getSelectedItem();
 
-        this.m.order.remove(selectedItem);
+        this.m.getOrder().remove(selectedItem);
 
         orderItems.getItems().remove(selectedItem);
     }

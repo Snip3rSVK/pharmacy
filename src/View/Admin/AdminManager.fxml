@@ -11,7 +11,7 @@
             <Button text="Nákup liekov" onAction="#goToBuyMedicine"/>
             <Button text="Zamestnanci" onAction="#logout"/>
             <Button text="Reporty" onAction="#logout"/>
-            <Button text="Sklad" onAction="#logout"/>
+            <Button text="Sklad" onAction="#goToWarehouse"/>
 
             <Button text="Odhlásiť sa" onAction="#logout"/>
         </VBox>

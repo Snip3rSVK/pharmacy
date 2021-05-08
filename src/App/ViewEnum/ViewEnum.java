@@ -7,11 +7,12 @@ public enum ViewEnum {
     LOGIN("Login.fxml"),
     ADMIN_MANAGER("Admin/AdminManager.fxml"),
     ADMIN_PHARMACIST("Admin/AdminPharmacist.fxml"),
-    ADMIN_BUY_MEDICINE("Admin/AdminBuyMedicine.fxml");
+    ADMIN_BUY_MEDICINE("Admin/AdminBuyMedicine.fxml"),
+    ADMIN_WAREHOUSE("Admin/AdminWarehouse.fxml");
 
     private final String VIEW_DIRECTORY = "/View/";
 
-    private URL path = null;
+    private URL path;
 
     ViewEnum(String path) {
         String fullPath = this.VIEW_DIRECTORY + path;

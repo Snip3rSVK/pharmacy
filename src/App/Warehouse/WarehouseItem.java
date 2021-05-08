@@ -30,6 +30,10 @@ public class WarehouseItem {
         return this.drug;
     }
 
+    public Integer getDrugCount() {
+        return this.drugCount;
+    }
+
     public String getSection() {
         return this.section;
     }
