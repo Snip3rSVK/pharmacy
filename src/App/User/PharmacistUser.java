@@ -4,13 +4,17 @@ import App.ViewEnum.ViewEnum;
 import Services.SceneService;
 
 public class PharmacistUser extends User {
-    // drugsSelled[]
+    // TODO drugsSelled[]
 
-    public PharmacistUser(String firstName, String lastName, String email, String phone, String password, SceneService sceneService) {
-        super(firstName, lastName, email, phone, password, sceneService);
+    public PharmacistUser(String firstName, String lastName, String email, String password) {
+        super(firstName, lastName, email, password);
     }
 
-    public void login() {
-        this.sceneService.switchScene(ViewEnum.ADMIN_PHARMACIST);
+    public ViewEnum adminViewEnum() {
+        return ViewEnum.ADMIN_PHARMACIST;
+    }
+
+    public UserEnum getType() {
+        return UserEnum.PHARMACIST;
     }
 }

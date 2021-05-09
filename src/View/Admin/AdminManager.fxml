@@ -9,7 +9,7 @@
     <GridPane alignment="center">
         <VBox>
             <Button text="Nákup liekov" onAction="#goToBuyMedicine"/>
-            <Button text="Zamestnanci" onAction="#logout"/>
+            <Button text="Zamestnanci" onAction="#goToEmployees"/>
             <Button text="Reporty" onAction="#logout"/>
             <Button text="Sklad" onAction="#goToWarehouse"/>
 

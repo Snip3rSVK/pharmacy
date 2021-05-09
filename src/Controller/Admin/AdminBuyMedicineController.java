@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 // TODO too much logic here, try to refactor or move some logic to model
+// TODO Maybe initModel in here?
 
 public class AdminBuyMedicineController extends AbstractAdminController<AdminBuyMedicineModel> {
     private DrugsDatabase drugsDatabase;

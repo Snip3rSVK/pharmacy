@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<?import javafx.scene.text.Text?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="Controller.Admin.AdminEmployeesController"
+>
+    <GridPane alignment="center">
+        <VBox>
+            <TableView fx:id="users" editable="true">
+                <columns>
+                    <TableColumn text="Meno">
+                        <cellValueFactory>
+                            <!-- will look into getFullName() if property fullName is private or doesn't exist -->
+                            <PropertyValueFactory property="fullName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Typ">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="type"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <Button fx:id="selectButton" text="Vybrať" onAction="#selectUser"/>
+
+            <VBox fx:id="addUserBox">
+                <Label text="Meno"/>
+                <TextField fx:id="firstNameField"/>
+
+                <Label text="Priezvisko"/>
+                <TextField fx:id="lastNameField"/>
+
+                <Label text="Email"/>
+                <TextField fx:id="emailField"/>
+
+                <Label text="Heslo"/>
+                <PasswordField fx:id="passwordField"/>
+
+                <Label text="Typ"/>
+                <ChoiceBox fx:id="choiceBox"/>
+
+                <Text fx:id="errorMessage"/>
+            </VBox>
+            <HBox>
+                <Button fx:id="addButton" text="Pridať" onAction="#addUser"/>
+                <Button fx:id="editButton" text="Upraviť" onAction="#editUser"/>
+                <Button fx:id="removeButton" text="Odstrániť" onAction="#removeUser"/>
+            </HBox>
+
+            <Button text="Odhlásiť sa" onAction="#logout"/>
+        </VBox>
+    </GridPane>
+</StackPane>

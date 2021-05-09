@@ -2,6 +2,6 @@ package App.Validation;
 
 public interface ErrorEnum {
 
-    String getText();
+    String toString();
 
 }

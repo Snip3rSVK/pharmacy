@@ -10,7 +10,7 @@ public enum BuyMedicineErrorEnum implements ErrorEnum {
         this.name = str;
     }
 
-    public String getText() {
+    public String toString() {
         return this.name;
     }
 

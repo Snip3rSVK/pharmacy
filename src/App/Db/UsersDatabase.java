@@ -13,13 +13,21 @@ public class UsersDatabase extends AbstractDatabase<User> {
 
     private Set<User> allUsers = new HashSet<>();
 
-    public UsersDatabase(SceneService sceneService) {
-        allUsers.add(new ManagerUser("Matej", "Pavlík", "snip3rsvk@gmail.com", "+421948611676", "1234", sceneService));
-        allUsers.add(new PharmacistUser("Janko", "Hraško", "hrasko@gmail.com", "+421777777777", "1234", sceneService));
+    public UsersDatabase() {
+        allUsers.add(new ManagerUser("Matej", "Pavlík", "snip3rsvk@gmail.com", "1234"));
+        allUsers.add(new PharmacistUser("Janko", "Hraško", "hrasko@gmail.com", "1234"));
     }
 
     public Set<User> getAll() {
         return this.allUsers;
+    }
+
+    public void add(User user) {
+        this.allUsers.add(user);
+    }
+
+    public void remove(User user) {
+        this.allUsers.remove(user);
     }
 
 }

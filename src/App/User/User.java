@@ -1,5 +1,6 @@
 package App.User;
 
+import App.ViewEnum.ViewEnum;
 import Services.SceneService;
 
 import java.io.Serializable;
@@ -9,22 +10,28 @@ public class User implements Serializable {
     private String lastName;
 
     private String email;
-    private String phone;
 
     private String password;
 
-    protected final SceneService sceneService;
-
-    User(String firstName, String lastName, String email, String phone, String password, SceneService sceneService) {
+    User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
 
         this.email = email;
-        this.phone = phone;
 
         this.password = password;
+    }
 
-        this.sceneService = sceneService;
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
     }
 
     public String getEmail() {
@@ -35,5 +42,28 @@ public class User implements Serializable {
         return this.password;
     }
 
-    public void login() {}
+    public UserEnum getType() {
+        return null;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    // return ViewEnum.LOGIN by default (if we don't know specifically type of user)
+    public ViewEnum adminViewEnum() {
+        return ViewEnum.LOGIN;
+    }
 }
