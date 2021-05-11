@@ -23,60 +23,59 @@ public class Main extends Application {
         primaryStage.setScene(DependencyInjectionContainer.sceneService.getScene());
         primaryStage.show();
 
+        DrugsDatabase drugsDatabase = DependencyInjectionContainer.drugsDatabase;
+        DrugsInformationDatabase drugsInformationDatabase = DependencyInjectionContainer.drugsInformationDatabase;
+        UsersDatabase usersDatabase = DependencyInjectionContainer.usersDatabase;
+        OrdersDatabase ordersDatabase = DependencyInjectionContainer.ordersDatabase;
+        WarehouseDatabase warehouseDatabase = DependencyInjectionContainer.warehouseDatabase;
+        SceneService sceneService = DependencyInjectionContainer.sceneService;
+        LoginService loginService = DependencyInjectionContainer.loginService;
+        UserManagementService userManagementService = DependencyInjectionContainer.userManagementService;
+        OrderService orderService = DependencyInjectionContainer.orderService;
+
         FXMLLoader loginLoader = FXMLLoaderCreator.create(
             ViewEnum.LOGIN,
             // Inject loginService, sceneService into LoginModel
-            new LoginModel(
-                DependencyInjectionContainer.loginService,
-                DependencyInjectionContainer.sceneService
-            ),
+            new LoginModel(loginService, sceneService),
             new LoginController()
         );
 
         FXMLLoader adminManagerLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_MANAGER,
-            new AdminManagerModel(DependencyInjectionContainer.loginService),
-            new AdminManagerController(DependencyInjectionContainer.sceneService)
+            new AdminManagerModel(loginService),
+            new AdminManagerController(sceneService)
         );
 
         FXMLLoader adminPharmacistLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_PHARMACIST,
-            new AdminPharmacistModel(DependencyInjectionContainer.loginService),
-            new AdminPharmacistController(DependencyInjectionContainer.sceneService)
+            new AdminPharmacistModel(loginService),
+            new AdminPharmacistController(sceneService)
         );
 
         FXMLLoader adminBuyMedicineLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_BUY_MEDICINE,
-            new AdminBuyMedicineModel(
-                DependencyInjectionContainer.loginService,
-                DependencyInjectionContainer.orderService
-            ),
-            new AdminBuyMedicineController(
-                DependencyInjectionContainer.sceneService,
-                DependencyInjectionContainer.drugsDatabase
-            )
+            new AdminBuyMedicineModel(loginService, orderService),
+            new AdminBuyMedicineController(sceneService, drugsDatabase)
         );
 
         FXMLLoader adminWarehouseLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_WAREHOUSE,
-            new AdminWarehouseModel(DependencyInjectionContainer.loginService, DependencyInjectionContainer.warehouseDatabase),
-            new AdminWarehouseController(DependencyInjectionContainer.sceneService)
+            new AdminWarehouseModel(loginService, warehouseDatabase),
+            new AdminWarehouseController(sceneService)
         );
 
         FXMLLoader adminEmployeesLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_EMPLOYEES,
-            new AdminEmployeesModel(DependencyInjectionContainer.loginService),
-            new AdminEmployeesController(DependencyInjectionContainer.sceneService, DependencyInjectionContainer.usersDatabase, DependencyInjectionContainer.userManagementService)
+            new AdminEmployeesModel(loginService),
+            new AdminEmployeesController(sceneService, usersDatabase, userManagementService)
         );
 
         FXMLLoader adminDrugsInformationLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_DRUGS_INFORMATION,
-            new AdminDrugsInformationModel(DependencyInjectionContainer.loginService),
-            new AdminDrugsInformationController(DependencyInjectionContainer.sceneService, DependencyInjectionContainer.drugsInformationDatabase)
+            new AdminDrugsInformationModel(loginService),
+            new AdminDrugsInformationController(sceneService, drugsInformationDatabase)
         );
 
-
-        SceneService sceneService = DependencyInjectionContainer.sceneService;
         sceneService.add(ViewEnum.LOGIN, loginLoader);
         sceneService.add(ViewEnum.ADMIN_MANAGER, adminManagerLoader);
         sceneService.add(ViewEnum.ADMIN_PHARMACIST, adminPharmacistLoader);
