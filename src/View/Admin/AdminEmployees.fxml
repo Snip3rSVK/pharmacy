@@ -52,7 +52,7 @@
                 <Button fx:id="removeButton" text="Odstrániť" onAction="#removeUser"/>
             </HBox>
 
-            <Button text="Späť" onAction="#logout"/>
+            <Button text="Späť" onAction="#goToMainAdminPage"/>
         </VBox>
     </GridPane>
 </StackPane>

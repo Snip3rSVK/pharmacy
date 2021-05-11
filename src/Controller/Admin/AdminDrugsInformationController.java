@@ -3,6 +3,7 @@ package Controller.Admin;
 import App.Db.DrugsInformationDatabase;
 import App.Drug.DrugInformation;
 import Model.Admin.AdminDrugsInformationModel;
+import Services.LoginService;
 import Services.SceneService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -12,8 +13,8 @@ import javafx.scene.text.Text;
 public class AdminDrugsInformationController extends AbstractAdminController<AdminDrugsInformationModel> {
     private DrugsInformationDatabase drugsInformationDatabase;
 
-    public AdminDrugsInformationController(SceneService sceneService, DrugsInformationDatabase drugsInformationDatabase) {
-        super(sceneService);
+    public AdminDrugsInformationController(SceneService sceneService, DrugsInformationDatabase drugsInformationDatabase, LoginService loginService) {
+        super(sceneService, loginService);
 
         this.drugsInformationDatabase = drugsInformationDatabase;
     }

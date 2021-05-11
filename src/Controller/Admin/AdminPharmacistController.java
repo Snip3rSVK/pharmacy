@@ -5,7 +5,7 @@ import Services.LoginService;
 import Services.SceneService;
 
 public class AdminPharmacistController extends AbstractAdminController<AdminPharmacistModel> {
-    public AdminPharmacistController(SceneService sceneService) {
-        super(sceneService);
+    public AdminPharmacistController(SceneService sceneService, LoginService loginService) {
+        super(sceneService, loginService);
     }
 }

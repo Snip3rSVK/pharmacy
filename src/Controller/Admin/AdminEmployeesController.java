@@ -5,6 +5,7 @@ import App.User.User;
 import App.User.UserEnum;
 import App.Validation.UserManagementError;
 import Model.Admin.AdminEmployeesModel;
+import Services.LoginService;
 import Services.SceneService;
 import Services.UserManagementService;
 import javafx.collections.FXCollections;
@@ -21,8 +22,8 @@ public class AdminEmployeesController extends AbstractAdminController<AdminEmplo
     private UsersDatabase usersDatabase;
     private UserManagementService userManagementService;
 
-    public AdminEmployeesController(SceneService sceneService, UsersDatabase usersDatabase, UserManagementService userManagementService) {
-        super(sceneService);
+    public AdminEmployeesController(SceneService sceneService, UsersDatabase usersDatabase, UserManagementService userManagementService, LoginService loginService) {
+        super(sceneService, loginService);
 
         this.usersDatabase = usersDatabase;
         this.userManagementService = userManagementService;

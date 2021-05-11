@@ -43,37 +43,37 @@ public class Main extends Application {
         FXMLLoader adminManagerLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_MANAGER,
             new AdminManagerModel(loginService),
-            new AdminManagerController(sceneService)
+            new AdminManagerController(sceneService, loginService)
         );
 
         FXMLLoader adminPharmacistLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_PHARMACIST,
             new AdminPharmacistModel(loginService),
-            new AdminPharmacistController(sceneService)
+            new AdminPharmacistController(sceneService, loginService)
         );
 
         FXMLLoader adminBuyMedicineLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_BUY_MEDICINE,
             new AdminBuyMedicineModel(loginService, orderService),
-            new AdminBuyMedicineController(sceneService, drugsDatabase)
+            new AdminBuyMedicineController(sceneService, drugsDatabase, loginService)
         );
 
         FXMLLoader adminWarehouseLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_WAREHOUSE,
             new AdminWarehouseModel(loginService, warehouseDatabase),
-            new AdminWarehouseController(sceneService)
+            new AdminWarehouseController(sceneService, loginService)
         );
 
         FXMLLoader adminEmployeesLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_EMPLOYEES,
             new AdminEmployeesModel(loginService),
-            new AdminEmployeesController(sceneService, usersDatabase, userManagementService)
+            new AdminEmployeesController(sceneService, usersDatabase, userManagementService, loginService)
         );
 
         FXMLLoader adminDrugsInformationLoader = FXMLLoaderCreator.create(
             ViewEnum.ADMIN_DRUGS_INFORMATION,
             new AdminDrugsInformationModel(loginService),
-            new AdminDrugsInformationController(sceneService, drugsInformationDatabase)
+            new AdminDrugsInformationController(sceneService, drugsInformationDatabase, loginService)
         );
 
         sceneService.add(ViewEnum.LOGIN, loginLoader);

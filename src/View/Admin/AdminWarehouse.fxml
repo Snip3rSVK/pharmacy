@@ -9,7 +9,7 @@
 >
     <GridPane alignment="center">
         <VBox fx:id="vBox">
-            <Button text="Späť" onAction="#logout"/>
+            <Button text="Späť" onAction="#goToMainAdminPage"/>
         </VBox>
     </GridPane>
 </StackPane>

@@ -38,7 +38,7 @@
             <Text text="Dávkovanie"/>
             <Text wrappingWidth="600" fx:id="dosing" />
 
-            <Button text="Späť" onAction="#logout"/>
+            <Button text="Späť" onAction="#goToMainAdminPage"/>
         </VBox>
     </GridPane>
 </StackPane>

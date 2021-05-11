@@ -6,6 +6,7 @@ import App.Drug.DrugSupplier;
 import App.Order.OrderItem;
 import App.Validation.BuyMedicineError;
 import Model.Admin.AdminBuyMedicineModel;
+import Services.LoginService;
 import Services.SceneService;
 import Util.FXMLListView;
 import Util.Format;
@@ -25,8 +26,8 @@ public class AdminBuyMedicineController extends AbstractAdminController<AdminBuy
     private DrugsDatabase drugsDatabase;
 
     // TODO database in controller?!
-    public AdminBuyMedicineController(SceneService sceneService, DrugsDatabase drugsDatabase) {
-        super(sceneService);
+    public AdminBuyMedicineController(SceneService sceneService, DrugsDatabase drugsDatabase, LoginService loginService) {
+        super(sceneService, loginService);
 
         this.drugsDatabase = drugsDatabase;
     }

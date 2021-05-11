@@ -55,7 +55,7 @@
 
             <Button fx:id="buyButton" text="Kúpiť" onAction="#buy"/>
 
-            <Button text="Späť" onAction="#logout"/>
+            <Button text="Späť" onAction="#goToMainAdminPage"/>
         </VBox>
     </GridPane>
 </StackPane>
