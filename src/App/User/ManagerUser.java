@@ -1,5 +1,6 @@
 package App.User;
 
+import App.DependencyInjectionContainer;
 import App.ViewEnum.ViewEnum;
 import Services.SceneService;
 
@@ -11,11 +12,12 @@ public class ManagerUser extends User {
         super(firstName, lastName, email, password);
     }
 
-    public ViewEnum adminViewEnum() {
-        return ViewEnum.ADMIN_MANAGER;
-    }
-
     public UserEnum getType() {
         return UserEnum.MANAGER;
     }
+
+    public void login() {
+        DependencyInjectionContainer.sceneService.switchScene(ViewEnum.ADMIN_MANAGER);
+    }
+
 }

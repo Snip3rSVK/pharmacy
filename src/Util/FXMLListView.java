@@ -14,14 +14,14 @@ public class FXMLListView {
         return param -> new ListCell<T>() {
             @Override
             protected void updateItem(T item, boolean empty) {
-                super.updateItem(item, empty);
+            super.updateItem(item, empty);
 
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(strFunc.apply(item));
-                }
+            if (empty || item == null) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                setText(strFunc.apply(item));
+            }
             }
         };
     }

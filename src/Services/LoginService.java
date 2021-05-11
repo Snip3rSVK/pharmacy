@@ -1,11 +1,14 @@
 package Services;
 
 import App.Db.UsersDatabase;
+import App.User.ManagerUser;
 import App.User.User;
 import App.Validation.LoginError;
 import App.Validation.LoginErrorEnum;
+import App.ViewEnum.ViewEnum;
+import javafx.scene.SceneAntialiasing;
 
-public class LoginService extends Service {
+public class LoginService implements Service {
     private User currentUser = null;
 
     private UsersDatabase usersDatabase;

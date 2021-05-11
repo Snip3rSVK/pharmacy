@@ -5,7 +5,7 @@ import App.Db.WarehouseDatabase;
 import App.Order.Order;
 import App.Order.OrderItem;
 
-public class OrderService extends Service {
+public class OrderService implements Service {
 
     private OrdersDatabase ordersDatabase;
     private WarehouseDatabase warehouseDatabase;

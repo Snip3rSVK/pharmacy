@@ -1,7 +1,7 @@
 package App.User;
 
+import App.DependencyInjectionContainer;
 import App.ViewEnum.ViewEnum;
-import Services.SceneService;
 
 public class PharmacistUser extends User {
     // TODO drugsSelled[]
@@ -10,11 +10,11 @@ public class PharmacistUser extends User {
         super(firstName, lastName, email, password);
     }
 
-    public ViewEnum adminViewEnum() {
-        return ViewEnum.ADMIN_PHARMACIST;
-    }
-
     public UserEnum getType() {
         return UserEnum.PHARMACIST;
+    }
+
+    public void login() {
+        DependencyInjectionContainer.sceneService.switchScene(ViewEnum.ADMIN_MANAGER);
     }
 }

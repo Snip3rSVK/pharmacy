@@ -1,11 +1,13 @@
 package App.User;
 
+import App.DependencyInjectionContainer;
 import App.ViewEnum.ViewEnum;
 import Services.SceneService;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+// TODO serialization
+public class User {
     private String firstName;
     private String lastName;
 
@@ -62,8 +64,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    // return ViewEnum.LOGIN by default (if we don't know specifically type of user)
-    public ViewEnum adminViewEnum() {
-        return ViewEnum.LOGIN;
+    public void login() {
+        DependencyInjectionContainer.sceneService.switchScene(ViewEnum.LOGIN);
     }
 }

@@ -8,7 +8,7 @@ import App.User.UserEnum;
 import App.Validation.UserManagementError;
 import App.Validation.UserManagementErrorEnum;
 
-public class UserManagementService extends Service {
+public class UserManagementService implements Service {
 
     private static final Integer MIN_PASSWORD_LENGTH = 8;
 
@@ -58,6 +58,7 @@ public class UserManagementService extends Service {
         this.usersDatabase.remove(user);
     }
 
+    // TODO maybe some validator class
     public void validateAll(String firstName, String lastName, String email, String password) throws UserManagementError {
         // TODO maybe copy costructors in User?
         this.validateFirstName(firstName);

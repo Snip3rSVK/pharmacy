@@ -1,6 +1,5 @@
 package App.ViewEnum;
 
-import java.io.IOException;
 import java.net.URL;
 
 public enum ViewEnum {

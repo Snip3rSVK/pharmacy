@@ -1,5 +1,8 @@
 package Model;
 
+import App.User.ManagerUser;
+import App.User.PharmacistUser;
+import App.ViewEnum.ViewEnum;
 import Services.LoginService;
 import Services.SceneService;
 
@@ -15,7 +18,6 @@ public class LoginModel implements Model {
     public void login(String email, String password) {
         this.loginService.login(email, password);
 
-        // TODO check for null
-        this.sceneService.switchScene(this.loginService.getCurrentUser().adminViewEnum());
+        this.loginService.getCurrentUser().login();
     }
 }

@@ -9,16 +9,12 @@ import Services.SceneService;
 public abstract class AbstractAdminModel implements Model {
     private LoginService loginService;
 
-    private User currentUser;
-
     public AbstractAdminModel(LoginService loginService) {
         this.loginService = loginService;
-
-        this.currentUser = this.loginService.getCurrentUser();
     }
 
     private User getUser() {
-        return this.currentUser;
+        return this.loginService.getCurrentUser();
     }
 
     // TODO check for null here
