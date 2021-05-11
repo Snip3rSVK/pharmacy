@@ -9,7 +9,8 @@ public enum ViewEnum {
     ADMIN_PHARMACIST("Admin/AdminPharmacist.fxml"),
     ADMIN_BUY_MEDICINE("Admin/AdminBuyMedicine.fxml"),
     ADMIN_WAREHOUSE("Admin/AdminWarehouse.fxml"),
-    ADMIN_EMPLOYEES("Admin/AdminEmployees.fxml");
+    ADMIN_EMPLOYEES("Admin/AdminEmployees.fxml"),
+    ADMIN_DRUGS_INFORMATION("Admin/AdminDrugsInformation.fxml");
 
     private final String VIEW_DIRECTORY = "/View/";
 

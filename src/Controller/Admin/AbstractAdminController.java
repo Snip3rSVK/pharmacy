@@ -30,4 +30,8 @@ public abstract class AbstractAdminController<T extends AbstractAdminModel> exte
         this.sceneService.switchScene(ViewEnum.ADMIN_EMPLOYEES);
     }
 
+    public void goToDrugsInformations() {
+        this.sceneService.switchScene(ViewEnum.ADMIN_DRUGS_INFORMATION);
+    }
+
 }

@@ -23,6 +23,7 @@ public class UserManagementService extends Service {
     public User add(String firstName, String lastName, String email, String password, UserEnum type) throws UserManagementError {
         User newUser;
 
+        // TODO maybe something like userEnum.getUserClass?
         if (type == UserEnum.MANAGER) {
             newUser = new ManagerUser(firstName, lastName, email, password);
         }

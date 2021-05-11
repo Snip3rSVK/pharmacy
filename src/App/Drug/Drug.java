@@ -54,4 +54,8 @@ public class Drug {
     public ArrayList<DrugSupplier> getSuppliers() {
         return this.suppliers;
     }
+
+    public String getManufacturerName() {
+        return this.manufacturer.getName();
+    }
 }

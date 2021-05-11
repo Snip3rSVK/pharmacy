@@ -11,7 +11,7 @@
         <VBox>
             <Button text="Predaj liekov" onAction="#logout"/>
             <Button text="Organizácia liekov" onAction="#logout"/>
-            <Button text="Informácie o liekoch" onAction="#logout"/>
+            <Button text="Informácie o liekoch" onAction="#goToDrugsInformations"/>
             <Button text="Sklad" onAction="#goToWarehouse"/>
 
             <Button text="Odhlásiť sa" onAction="#logout"/>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Separator?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="Controller.Admin.AdminDrugsInformationController"
+>
+    <GridPane alignment="center">
+        <VBox>
+            <TableView fx:id="drugsInformation" prefWidth="600">
+                <columns>
+                    <TableColumn text="Názov">
+                        <cellValueFactory>
+                            <!-- will look into getDrugFullName() if property drugFullName is private or doesn't exist -->
+                            <PropertyValueFactory property="drugFullName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Výrobca">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="drugManufacturerName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <Text text="Zloženie"/>
+            <Text wrappingWidth="600" fx:id="composition" />
+
+            <Separator/>
+
+            <Text text="Dávkovanie"/>
+            <Text wrappingWidth="600" fx:id="dosing" />
+
+            <Button text="Odhlásiť sa" onAction="#logout"/>
+        </VBox>
+    </GridPane>
+</StackPane>
