@@ -2,12 +2,11 @@ package App.User;
 
 import App.DependencyInjectionContainer;
 import App.ViewEnum.ViewEnum;
-import Services.SceneService;
 
 import java.io.Serializable;
 
 // TODO serialization
-public class User {
+public class User implements Serializable {
     private String firstName;
     private String lastName;
 

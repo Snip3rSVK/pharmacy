@@ -1,21 +1,22 @@
 package App.Db;
 
 import App.Drug.Drug;
-import App.Order.Order;
 import App.Warehouse.WarehouseItem;
+import Util.Comparators;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
-public class WarehouseDatabase extends AbstractDatabase<WarehouseItem> {
+public class WarehouseDatabase implements Database<WarehouseItem> {
     private Map<Drug, WarehouseItem> warehouseMap = new HashMap<>();
     // sort by section
-    private SortedSet<WarehouseItem> allStorage = new TreeSet<>((w1, w2) -> w2.getSection().compareTo(w1.getSection()));
+    private SortedSet<WarehouseItem> allStorage = new TreeSet<>(new Comparators.WarehouseComparator());
 
-    public WarehouseDatabase() {
+    private DrugsDatabase drugsDatabase;
 
+    public WarehouseDatabase(DrugsDatabase drugsDatabase) {
+        this.drugsDatabase = drugsDatabase;
+
+        this.deserializeAll();
     }
 
     public SortedSet<WarehouseItem> getAll() {
@@ -36,10 +37,21 @@ public class WarehouseDatabase extends AbstractDatabase<WarehouseItem> {
         if (warehouseItem == null) {
             warehouseItem = new WarehouseItem(drug);
 
-            this.allStorage.add(warehouseItem);
-            this.warehouseMap.put(drug, warehouseItem);
+            this.add(warehouseItem);
         }
 
         return warehouseItem;
+    }
+
+    public void add(WarehouseItem warehouseItem) {
+        this.allStorage.add(warehouseItem);
+        this.warehouseMap.put(warehouseItem.getDrug(), warehouseItem);
+    }
+
+    public void addDeserialized(WarehouseItem warehouseItem) {
+        // set drug to same instance as drug in drugsDatabase in deserialization
+        warehouseItem.setDrug(this.drugsDatabase.getByCode(warehouseItem.getDrug().getCode()));
+
+        this.add(warehouseItem);
     }
 }

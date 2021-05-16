@@ -1,6 +1,8 @@
 package App.Drug;
 
-public class DrugInformation {
+import java.io.Serializable;
+
+public class DrugInformation implements Serializable {
 
     private Drug drug;
     private String composition;
@@ -28,5 +30,14 @@ public class DrugInformation {
 
     public String getDrugManufacturerName() {
         return this.drug.getManufacturerName();
+    }
+
+    public Drug getDrug() {
+        return this.drug;
+    }
+
+    // this is for deserialization
+    public void setDrug(Drug drug) {
+        this.drug = drug;
     }
 }

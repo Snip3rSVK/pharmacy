@@ -3,7 +3,9 @@ package App.Order;
 import App.Drug.Drug;
 import App.Drug.DrugSupplier;
 
-public class OrderItem {
+import java.io.Serializable;
+
+public class OrderItem implements Serializable {
 
     private Drug drug;
     private DrugSupplier drugSupplier;
@@ -17,6 +19,16 @@ public class OrderItem {
 
     public Drug getDrug() {
         return this.drug;
+    }
+
+    // for deserialization
+    public void setDrug(Drug drug) {
+        this.drug = drug;
+    }
+
+    // for deserialization
+    public void setDrugSupplier(DrugSupplier drugSupplier) {
+        this.drugSupplier = drugSupplier;
     }
 
     public DrugSupplier getDrugSupplier() {

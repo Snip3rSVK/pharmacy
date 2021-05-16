@@ -16,13 +16,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private String APP_TITLE = "Lekáreň";
+
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Lekáreň");
-
-        primaryStage.setScene(DependencyInjectionContainer.sceneService.getScene());
-        primaryStage.show();
-
         DrugsDatabase drugsDatabase = DependencyInjectionContainer.drugsDatabase;
         DrugsInformationDatabase drugsInformationDatabase = DependencyInjectionContainer.drugsInformationDatabase;
         UsersDatabase usersDatabase = DependencyInjectionContainer.usersDatabase;
@@ -32,6 +29,10 @@ public class Main extends Application {
         LoginService loginService = DependencyInjectionContainer.loginService;
         UserManagementService userManagementService = DependencyInjectionContainer.userManagementService;
         OrderService orderService = DependencyInjectionContainer.orderService;
+
+        primaryStage.setTitle(this.APP_TITLE);
+        primaryStage.setScene(sceneService.getScene());
+        primaryStage.show();
 
         FXMLLoader loginLoader = FXMLLoaderCreator.create(
             ViewEnum.LOGIN,
@@ -84,6 +85,16 @@ public class Main extends Application {
         sceneService.add(ViewEnum.ADMIN_EMPLOYEES, adminEmployeesLoader);
         sceneService.add(ViewEnum.ADMIN_DRUGS_INFORMATION, adminDrugsInformationLoader);
         sceneService.switchScene(ViewEnum.LOGIN);
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+
+        // Serialize all databases when user closes application
+        for (Database database : DependencyInjectionContainer.databases) {
+            database.serializeAll();
+        }
     }
 
     public static void main(String[] args) {

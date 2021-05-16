@@ -3,9 +3,10 @@ package App.Order;
 import App.Drug.Drug;
 import App.Drug.DrugSupplier;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Order {
+public class Order implements Serializable {
 
     private Set<OrderItem> orderItems = new HashSet<>();
     private Date createdDate;

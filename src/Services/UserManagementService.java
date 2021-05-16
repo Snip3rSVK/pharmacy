@@ -60,7 +60,6 @@ public class UserManagementService implements Service {
 
     // TODO maybe some validator class
     public void validateAll(String firstName, String lastName, String email, String password) throws UserManagementError {
-        // TODO maybe copy costructors in User?
         this.validateFirstName(firstName);
         this.validateLastName(lastName);
         this.validateEmail(email);

@@ -1,6 +1,8 @@
 package App.Drug;
 
-public class DrugManufacturer {
+import java.io.Serializable;
+
+public class DrugManufacturer implements Serializable {
     private String name;
     private String countryCode;
 

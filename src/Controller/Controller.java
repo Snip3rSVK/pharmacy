@@ -8,7 +8,7 @@ public abstract class Controller<T extends Model> {
     public void initModel(T model) {
         if (this.m != null) {
             // TODO maybe enum message
-            throw new IllegalStateException("Model can only be initialized once");
+            throw new IllegalStateException("Model can only be initialized only once");
         }
 
         this.m = model;

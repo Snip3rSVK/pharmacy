@@ -2,10 +2,11 @@ package App.Drug;
 
 import Util.HashGenerator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Drug {
+public class Drug implements Serializable {
 
     private String registrationNumber;
     private Integer code;
@@ -51,11 +52,16 @@ public class Drug {
         return this.price;
     }
 
-    public ArrayList<DrugSupplier> getSuppliers() {
-        return this.suppliers;
+    public DrugManufacturer getManufacturer() {
+        return this.manufacturer;
     }
 
     public String getManufacturerName() {
         return this.manufacturer.getName();
     }
+
+    public ArrayList<DrugSupplier> getSuppliers() {
+        return this.suppliers;
+    }
+
 }

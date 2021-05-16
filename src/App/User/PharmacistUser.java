@@ -15,6 +15,6 @@ public class PharmacistUser extends User {
     }
 
     public void login() {
-        DependencyInjectionContainer.sceneService.switchScene(ViewEnum.ADMIN_MANAGER);
+        DependencyInjectionContainer.sceneService.switchScene(ViewEnum.ADMIN_PHARMACIST);
     }
 }

@@ -4,7 +4,9 @@ import App.Drug.Drug;
 import App.Drug.DrugSupplier;
 import Util.HashGenerator;
 
-public class WarehouseItem {
+import java.io.Serializable;
+
+public class WarehouseItem implements Serializable {
 
     private static final Integer MAX_SECTION_NUMBER = 20;
 
@@ -28,6 +30,11 @@ public class WarehouseItem {
 
     public Drug getDrug() {
         return this.drug;
+    }
+
+    // for deserialization
+    public void setDrug(Drug drug) {
+        this.drug = drug;
     }
 
     public Integer getDrugCount() {

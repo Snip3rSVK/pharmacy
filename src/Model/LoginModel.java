@@ -1,8 +1,5 @@
 package Model;
 
-import App.User.ManagerUser;
-import App.User.PharmacistUser;
-import App.ViewEnum.ViewEnum;
 import Services.LoginService;
 import Services.SceneService;
 
