@@ -8,7 +8,6 @@ import javafx.scene.control.TreeView;
 
 public class AdminWarehouseModel extends AbstractAdminModel {
     private WarehouseDatabase warehouseDatabase;
-    private TreeView<String> treeView;
 
     public AdminWarehouseModel(LoginService loginService, WarehouseDatabase warehouseDatabase) {
         super(loginService);
@@ -17,15 +16,6 @@ public class AdminWarehouseModel extends AbstractAdminModel {
     }
 
     public TreeView<String> getTreeView() {
-        if (this.treeView == null) {
-            this.treeView = this.getSectionTreeView();
-        }
-
-        return this.treeView;
-    }
-
-    private TreeView<String> getSectionTreeView() {
-        // TODO enum?
         TreeItem<String> rootItem = new TreeItem<>("Sklad");
 
         TreeItem<String> currTreeItem = null;
