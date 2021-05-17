@@ -9,7 +9,8 @@ Lekárnik hrasko@gmail.com 1234
 src/App/Main.java
 
 # Zmeny od prezentácie
-Commit: [c57fae8](https://github.com/OOP-FIIT/oop-2021-uto-18-c-krizan-Snip3rSVK/commit/29584a512a098ca7383a953375f91c2f2f21c960).
+Commit: [c57fae8](https://github.com/OOP-FIIT/oop-2021-uto-18-c-krizan-Snip3rSVK/commit/29584a512a098ca7383a953375f91c2f2f21c960)
+
 ## Použitie rozhraní
 V projekte sa používa rozhranie Database, ktoré implementujú všetky databázy v balíku App.Db. Toto rozhranie sa používa prevažne na serializáciu a deserializáciu. Môžeme to vidieť aj v triede Main (balík App) v metóde stop().
 
